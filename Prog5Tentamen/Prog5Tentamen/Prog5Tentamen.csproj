@@ -193,12 +193,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ZaalController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\EntityContext.cs" />
+    <Compile Include="Models\Film.cs" />
+    <Compile Include="Models\Gast.cs" />
+    <Compile Include="Models\Reservering.cs" />
+    <Compile Include="Models\Zaal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +299,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Zaal\Create.cshtml" />
+    <Content Include="Views\Zaal\Delete.cshtml" />
+    <Content Include="Views\Zaal\Details.cshtml" />
+    <Content Include="Views\Zaal\Edit.cshtml" />
+    <Content Include="Views\Zaal\Index.cshtml" />
+    <Content Include="Views\Film\Create.cshtml" />
+    <Content Include="Views\Film\Delete.cshtml" />
+    <Content Include="Views\Film\Details.cshtml" />
+    <Content Include="Views\Film\Edit.cshtml" />
+    <Content Include="Views\Film\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

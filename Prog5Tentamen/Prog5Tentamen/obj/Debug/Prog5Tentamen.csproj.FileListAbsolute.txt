@@ -93,6 +93,5 @@ C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\bin\ru\System.Spati
 C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\obj\Debug\Prog5Tentamen.csproj.App.config
-C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\obj\Debug\Prog5Tentamen.csprojResolveAssemblyReference.cache
 C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\obj\Debug\Prog5Tentamen.dll
 C:\Users\Stan\Documents\Bioscoop\Prog5Tentamen\Prog5Tentamen\obj\Debug\Prog5Tentamen.pdb
