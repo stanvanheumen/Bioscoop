@@ -1,0 +1,9 @@
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\DomainModel.dll.config
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\DomainModel.dll
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\DomainModel.pdb
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\EntityFramework.dll
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\EntityFramework.xml
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\obj\Debug\DomainModel.dll
+C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\obj\Debug\DomainModel.pdb

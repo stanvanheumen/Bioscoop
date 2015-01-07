@@ -1,0 +1,38 @@
+﻿@model IEnumerable<DomainModel.Models.Zaal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Zalen</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zitplaatsen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zitplaatsen)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzigen", "Edit", new { id = item.ZaalId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Verwijderen", "Delete", new { id = item.ZaalId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+</table>
+
+<p>
+    @Html.ActionLink("Nieuwe zaal", "Create", null, new { @class = "btn btn-default" })
+</p>

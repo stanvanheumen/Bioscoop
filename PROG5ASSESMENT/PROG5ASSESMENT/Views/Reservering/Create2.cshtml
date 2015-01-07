@@ -1,0 +1,86 @@
+﻿@model DomainModel.Models.Reservering
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm("Create", "Reservering")) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Reservering</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group col-lg-12">
+            @Html.LabelFor(model => model.Film, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select id="filmId" name="filmId" class="form-control">
+                    @foreach (DomainModel.Models.Film f in ViewBag.films) {
+                        <option value="@f.FilmId">@f.Naam</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-lg-12">
+            @Html.LabelFor(model => model.Factuuradres, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Factuuradres, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Factuuradres, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-lg-12">
+            @Html.LabelFor(model => model.Bankrekeningnummer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Bankrekeningnummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bankrekeningnummer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-lg-12">
+            @Html.LabelFor(model => model.KortingsCode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KortingsCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KortingsCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <table class="table">
+                <tr>
+                    <th>#</th>
+                    <th>Voornaam</th>
+                    <th>Tussenvoegsel</th>
+                    <th>Achternaam</th>
+                </tr>
+                @for (int i = 0; i < ViewBag.amount; i++) {
+                    <tr>
+                        <td>@i :</td>
+                        <td><input class="form-control" type="text" name="Gasten[@i].Voornaam" /></td>
+                        <td><input class="form-control" type="text" name="Gasten[@i].TussenVoegsel" /></td>
+                        <td><input class="form-control" type="text" name="Gasten[@i].Achternaam" /></td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

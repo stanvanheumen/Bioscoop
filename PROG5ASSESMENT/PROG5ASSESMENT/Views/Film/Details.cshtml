@@ -1,0 +1,81 @@
+﻿@model DomainModel.Models.Film
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Film</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </dt>
+
+        <dd>
+            €@Html.DisplayFor(model => model.Prijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDatumMetTijd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDatumMetTijd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EindDatumMetTijd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EindDatumMetTijd)
+        </dd>
+
+        <dt>
+            Duur
+        </dt>
+
+        <dd>
+            @(Model.EindDatumMetTijd.Subtract(Model.StartDatumMetTijd))
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zaal.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zaal.Naam)
+        </dd>
+
+        <dt>
+            Gereserveerden
+        </dt>
+
+        <dd>
+            <table>
+                @foreach (var item in Model.Reserveringen) {
+                    foreach (var gast in item.Gasten) {
+                        <tr><td>@(gast.Voornaam + " " + gast.TussenVoegsel + " " + gast.Achternaam)</td></tr>
+                    }
+                }
+            </table>
+            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzigen", "Edit", new { id = Model.FilmId }, new { @class = "btn btn-default" }) |
+    @Html.ActionLink("Annuleren", "Index", null, new { @class = "btn btn-default" })
+</p>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DomainModel.Models.Film>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Films</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDatumMetTijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EindDatumMetTijd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naam)
+        </td>
+        <td>
+            €@Html.DisplayFor(modelItem => item.Prijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDatumMetTijd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EindDatumMetTijd)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.FilmId }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.FilmId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.FilmId }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+</table>
+
+<p>
+    @Html.ActionLink("Nieuwe film", "Create", null, new { @class = "btn btn-default" })
+</p>

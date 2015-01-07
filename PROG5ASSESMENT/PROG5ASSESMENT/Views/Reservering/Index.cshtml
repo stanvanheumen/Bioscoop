@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DomainModel.Models.Reservering>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Reserveringen</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Film.Naam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Totaalprijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Factuuradres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bankrekeningnummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KortingsCode)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Film.Naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Totaalprijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Factuuradres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bankrekeningnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KortingsCode)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ReserveringId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ReserveringId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ReserveringId })
+        </td>
+    </tr>
+}
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Create2", "Reservering")) {
+    <input type="text" id="ss" name="id" />
+    <input type="submit" value="Update" />
+}

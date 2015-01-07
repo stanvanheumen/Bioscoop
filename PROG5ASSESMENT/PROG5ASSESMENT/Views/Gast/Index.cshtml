@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DomainModel.Models.Gast>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Voornaam)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TussenVoegsel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Achternaam)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Voornaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TussenVoegsel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Achternaam)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.GastId })
+        </td>
+    </tr>
+}
+
+</table>

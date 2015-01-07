@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DomainModel.Models.Korting>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KortingsCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kortingsprijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EindDatum)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KortingsCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kortingsprijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EindDatum)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.KortingId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KortingId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KortingId })
+        </td>
+    </tr>
+}
+
+</table>
