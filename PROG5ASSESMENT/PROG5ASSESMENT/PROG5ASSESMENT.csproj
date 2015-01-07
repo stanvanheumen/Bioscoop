@@ -203,7 +203,7 @@
     <Content Include="Views\Zaal\Delete.cshtml" />
     <Content Include="Views\Zaal\Edit.cshtml" />
     <Content Include="Views\Zaal\Index.cshtml" />
-    <Content Include="Views\Reservering\Create2.cshtml" />
+    <Content Include="Views\Reservering\Create.cshtml" />
     <Content Include="Views\Reservering\Delete.cshtml" />
     <Content Include="Views\Reservering\Details.cshtml" />
     <Content Include="Views\Reservering\Edit.cshtml" />
@@ -212,7 +212,6 @@
     <Content Include="Views\Gast\Index.cshtml" />
     <Content Include="Views\Korting\Create.cshtml" />
     <Content Include="Views\Korting\Delete.cshtml" />
-    <Content Include="Views\Korting\Details.cshtml" />
     <Content Include="Views\Korting\Edit.cshtml" />
     <Content Include="Views\Korting\Index.cshtml" />
   </ItemGroup>

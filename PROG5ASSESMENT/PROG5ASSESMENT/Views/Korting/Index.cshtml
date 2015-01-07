@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Kortingen</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -32,7 +29,7 @@
             @Html.DisplayFor(modelItem => item.KortingsCode)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Kortingsprijs)
+            €@Html.DisplayFor(modelItem => item.Kortingsprijs)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDatum)
@@ -41,11 +38,11 @@
             @Html.DisplayFor(modelItem => item.EindDatum)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KortingId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KortingId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KortingId })
+            @Html.ActionLink("Wijzigen", "Edit", new { id = item.KortingId }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Verwijderen", "Delete", new { id = item.KortingId }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
-
 </table>
+
+@Html.ActionLink("Nieuwe korting", "Create", null, new { @class = "btn btn-default" })

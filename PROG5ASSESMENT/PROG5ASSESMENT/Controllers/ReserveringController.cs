@@ -26,7 +26,7 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create2(int id = 1) {
+        public ActionResult Create(int id = 1) {
             Reservering reservering = new Reservering();
             for (int i = 0; i < id; i++) {
                 reservering.Gasten.Add(new Gast());
@@ -37,7 +37,7 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Create(Reservering reservering, int filmId) {
+        public ActionResult CreateConfirm(Reservering reservering, int filmId) {
             reservering.Film = _reserveringRepository.GetFilm(filmId);
             reservering.Totaalprijs = reservering.Gasten.Count * reservering.Film.Prijs;
             if (!string.IsNullOrEmpty(reservering.KortingsCode)) {
