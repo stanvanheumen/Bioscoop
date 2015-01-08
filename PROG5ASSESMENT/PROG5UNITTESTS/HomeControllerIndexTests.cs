@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PROG5ASSESMENT.Controllers;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PROG5UNITTESTS
@@ -21,7 +17,7 @@ namespace PROG5UNITTESTS
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            //Assert.AreEqual("Hello, world!", result.ViewBag.Message);
+            Assert.AreEqual(null, result.Model);
         }
     }
 }

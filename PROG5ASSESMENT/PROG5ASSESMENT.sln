@@ -7,12 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG5ASSESMENT", "PROG5ASSE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModel", "DomainModel\DomainModel.csproj", "{65B7B69A-7428-4FA6-A870-E6A35ECD48E9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0BA797D0-765B-4EDE-B0DE-7B7C41C1EC59}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG5UNITTESTS", "PROG5UNITTESTS\PROG5UNITTESTS.csproj", "{30800895-9F21-406C-91C5-834D92B7D40D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,6 +23,10 @@ Global
 		{65B7B69A-7428-4FA6-A870-E6A35ECD48E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65B7B69A-7428-4FA6-A870-E6A35ECD48E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65B7B69A-7428-4FA6-A870-E6A35ECD48E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30800895-9F21-406C-91C5-834D92B7D40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30800895-9F21-406C-91C5-834D92B7D40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30800895-9F21-406C-91C5-834D92B7D40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30800895-9F21-406C-91C5-834D92B7D40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
