@@ -30,4 +30,3 @@ C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\PagedList.
 C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\PagedList.Mvc.dll
 C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\PagedList.xml
 C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\bin\Debug\PagedList.Mvc.xml
-C:\Users\Stan\Documents\Bioscoop\PROG5ASSESMENT\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
