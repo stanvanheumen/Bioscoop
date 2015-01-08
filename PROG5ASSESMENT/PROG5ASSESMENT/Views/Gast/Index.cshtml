@@ -1,21 +1,32 @@
-﻿@model IEnumerable<DomainModel.Models.Gast>
+﻿@model PagedList.IPagedList<DomainModel.Models.Gast>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Gasten</h2>
-
+@using ( Html.BeginForm( "Index", "Film", FormMethod.Get ) ) {
+    <div class="input-group input-group-lg">
+        @Html.TextBox( "SearchString", ViewBag.CurrentFilter as string, null, new { placeholder = "Zoeken in films", @class = "form-control" } )
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
+}
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Voornaam)
+            @Html.ActionLink( "Voornaam", "Index", new { sortOrder = ViewBag.NameSortParm } )
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Achternaam)
+            @Html.ActionLink( "Achternaam", "Index", new { sortOrder = ViewBag.NameSortParm } )
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Reservering.Film.Naam)
+            Filmnaam
         </th>
         <th></th>
     </tr>
@@ -37,3 +48,7 @@
     </tr>
 }
 </table>
+Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action( "Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter } ) )

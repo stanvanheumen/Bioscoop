@@ -21,7 +21,6 @@
     <tr>
         <th>
             @Html.ActionLink( "Naam", "Index", new { sortOrder = ViewBag.NameSortParm } )
-            
         </th>
         <th>
             Prijs
@@ -58,7 +57,7 @@
 }
 </table>
 
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager( Model, page => Url.Action( "Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter } ) )

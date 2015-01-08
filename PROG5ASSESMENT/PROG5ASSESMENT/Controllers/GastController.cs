@@ -8,22 +8,52 @@ using System.Web;
 using System.Web.Mvc;
 using DomainModel.Models;
 using DomainModel.IRepositories;
+using PagedList;
 
 namespace PROG5ASSESMENT.Controllers {
 
     public class GastController : Controller {
-       
-        private IGastRepository _gastRepository;
+
+		private IGastRepository _gastRepository;
+		private EntitySearchRepository _search;
 
         public GastController() {
-            _gastRepository = new EntityGastRepository();
+			_gastRepository = new EntityGastRepository( );
+			_search = new EntitySearchRepository( );
         }
 
-        [HttpGet]
-        public ActionResult Index() {
-            var model = _gastRepository.GetAll();
-            return View(model);
-        }
+		public ActionResult Index ( string sortOrder, string currentFilter, string searchString, int? page, int pagesize = 10 ) {
+			ViewBag.CurrentSort = sortOrder;
+			ViewBag.ResultAmount = pagesize;
+			ViewBag.NameSortParm = String.IsNullOrEmpty( sortOrder ) ? "Voornaam" : "";
+
+			if ( searchString != null ) {
+				page = 1;
+			} else {
+				searchString = currentFilter;
+			}
+
+			ViewBag.CurrentFilter = searchString;
+
+			var films = _gastRepository.GetAll( );
+			if ( !String.IsNullOrEmpty( searchString ) ) {
+				films = _search.GetGuestsWith( searchString );
+			}
+			switch ( sortOrder ) {
+				case "Voornaam":
+				films = films.OrderBy( f => f.Voornaam ).ToList( );
+				break;
+				case "Achternaam":
+				films = films.OrderBy( f => f.Achternaam ).ToList( );
+				break;
+				default:
+				films = films.OrderByDescending( b => b.Voornaam ).ToList( );
+				break;
+			}
+			int pageSize = pagesize;
+			int pageNumber = ( page ?? 1 );
+			return View( films.ToPagedList( pageNumber, pageSize ) );
+		}
 
         [HttpGet]
         [Authorize]

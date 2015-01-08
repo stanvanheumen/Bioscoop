@@ -8,22 +8,49 @@ using System.Web;
 using System.Web.Mvc;
 using DomainModel.Models;
 using DomainModel.IRepositories;
+using PagedList;
 
 namespace PROG5ASSESMENT.Controllers {
 
     public class ReserveringController : Controller {
-        
-        private IReserveringRepository _reserveringRepository;
+
+		private IReserveringRepository _reserveringRepository;
+		private EntitySearchRepository _search;
 
         public ReserveringController() {
-            _reserveringRepository = new EntityReserveringRepository();
+			_reserveringRepository = new EntityReserveringRepository( );
+			_search = new EntitySearchRepository( );
         }
 
-        [HttpGet]
-        public ActionResult Index() {
-            var model = _reserveringRepository.GetAll();
-            return View(model);
-        }
+		public ActionResult Index ( string sortOrder, string currentFilter, string searchString, int? page, int pagesize = 10 ) {
+			ViewBag.CurrentSort = sortOrder;
+			ViewBag.ResultAmount = pagesize;
+			ViewBag.NameSortParm = String.IsNullOrEmpty( sortOrder ) ? "Film" : "";
+
+			if ( searchString != null ) {
+				page = 1;
+			} else {
+				searchString = currentFilter;
+			}
+
+			ViewBag.CurrentFilter = searchString;
+
+			var films = _reserveringRepository.GetAll( );
+			if ( !String.IsNullOrEmpty( searchString ) ) {
+				films = _search.GetReservationWith( searchString );
+			}
+			switch ( sortOrder ) {
+				case "Film":
+				films = films.OrderBy( f => f.Film.Naam).ToList( );
+				break;
+				default:
+				films = films.OrderByDescending( b => b.Film.Naam ).ToList( );
+				break;
+			}
+			int pageSize = pagesize;
+			int pageNumber = ( page ?? 1 );
+			return View( films.ToPagedList( pageNumber, pageSize ) );
+		}
 
         [HttpPost]
         public ActionResult Create(int id = 1) {

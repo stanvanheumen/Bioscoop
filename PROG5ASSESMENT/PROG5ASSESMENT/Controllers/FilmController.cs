@@ -18,12 +18,6 @@ namespace PROG5ASSESMENT.Controllers {
             _search = new EntitySearchRepository();
         }
 
-		//[HttpGet]
-		//public ActionResult Index() {
-		//	var model = _filmRepository.GetAll();
-		//	return View(model);
-		//}
-
 		public ActionResult Index ( string sortOrder, string currentFilter, string searchString, int? page, int pagesize = 10 ) {
 			ViewBag.CurrentSort = sortOrder;
 			ViewBag.ResultAmount = pagesize;

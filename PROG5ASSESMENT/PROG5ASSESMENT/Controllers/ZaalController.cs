@@ -1,22 +1,52 @@
 ﻿using DomainModel.IRepositories;
 using DomainModel.Models;
+using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Linq;
+using PagedList;
 
 namespace PROG5ASSESMENT.Controllers {
 
     public class ZaalController : Controller {
 
-        private IZaalRepository _zaalRepository;
+		private IZaalRepository _zaalRepository;
+		private EntitySearchRepository _search;
 
         public ZaalController() {
-            _zaalRepository = new EntityZaalRepository();
+			_zaalRepository = new EntityZaalRepository( );
+			_search = new EntitySearchRepository( );
         }
 
-        [HttpGet]
-        public ActionResult Index() {
-            var model = _zaalRepository.GetAll();
-            return View(model);
-        }
+		public ActionResult Index ( string sortOrder, string currentFilter, string searchString, int? page, int pagesize = 10 ) {
+			ViewBag.CurrentSort = sortOrder;
+			ViewBag.ResultAmount = pagesize;
+			ViewBag.NameSortParm = String.IsNullOrEmpty( sortOrder ) ? "Naam" : "";
+
+			if ( searchString != null ) {
+				page = 1;
+			} else {
+				searchString = currentFilter;
+			}
+
+			ViewBag.CurrentFilter = searchString;
+
+			var films = _zaalRepository.GetAll( );
+			if ( !String.IsNullOrEmpty( searchString ) ) {
+				films = _search.GetRoomsWith( searchString );
+			}
+			switch ( sortOrder ) {
+				case "Naam":
+				films = films.OrderBy( f => f.Naam ).ToList( );
+				break;
+				default:
+				films = films.OrderByDescending( b => b.Naam ).ToList( );
+				break;
+			}
+			int pageSize = pagesize;
+			int pageNumber = ( page ?? 1 );
+			return View( films.ToPagedList( pageNumber, pageSize ) );
+		}
 
         [HttpGet]
         [Authorize]

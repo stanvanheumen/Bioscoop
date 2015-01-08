@@ -8,22 +8,49 @@ using System.Web;
 using System.Web.Mvc;
 using DomainModel.Models;
 using DomainModel.IRepositories;
+using PagedList;
 
 namespace PROG5ASSESMENT.Controllers {
 
     public class KortingController : Controller {
-        
-        private IKortingRepository _kortingRepository;
+
+		private IKortingRepository _kortingRepository;
+		private EntitySearchRepository _search;
 
         public KortingController() {
-            _kortingRepository = new EntityKortingRepository();
+			_kortingRepository = new EntityKortingRepository( );
+			_search = new EntitySearchRepository( );
         }
 
-        [HttpGet]
-        public ActionResult Index() {
-            var model = _kortingRepository.GetAll();
-            return View(model);
-        }
+		public ActionResult Index ( string sortOrder, string currentFilter, string searchString, int? page, int pagesize = 10 ) {
+			ViewBag.CurrentSort = sortOrder;
+			ViewBag.ResultAmount = pagesize;
+			ViewBag.NameSortParm = String.IsNullOrEmpty( sortOrder ) ? "Koringscode" : "";
+
+			if ( searchString != null ) {
+				page = 1;
+			} else {
+				searchString = currentFilter;
+			}
+
+			ViewBag.CurrentFilter = searchString;
+
+			var films = _kortingRepository.GetAll( );
+			if ( !String.IsNullOrEmpty( searchString ) ) {
+				films = _search.GetDiscountWith( searchString );
+			}
+			switch ( sortOrder ) {
+				case "Koringscode":
+				films = films.OrderBy( f => f.KortingsCode ).ToList( );
+				break;
+				default:
+				films = films.OrderByDescending( b => b.KortingsCode ).ToList( );
+				break;
+			}
+			int pageSize = pagesize;
+			int pageNumber = ( page ?? 1 );
+			return View( films.ToPagedList( pageNumber, pageSize ) );
+		}
 
         [HttpGet]
         [Authorize]
