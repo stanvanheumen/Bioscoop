@@ -1,15 +1,22 @@
-﻿@model IEnumerable<DomainModel.Models.Film>
+﻿@model PagedList.IPagedList<DomainModel.Models.Film>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Films</h2>
-
+@using ( Html.BeginForm( "Index", "Block", FormMethod.Get ) ) {
+    <p>
+        Zoeken in tabel: @Html.TextBox( "SearchString", ViewBag.CurrentFilter as string )
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Naam)
+            @Html.ActionLink( Model.Naam, "Index", new { sortOrder = ViewBag.NameSortParm } )
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Prijs)
@@ -45,6 +52,10 @@
     </tr>
 }
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager( Model, page => Url.Action( "Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter } ) )
 
 <p>
     @Html.ActionLink("Nieuwe film", "Create", null, new { @class = "btn btn-default" })
