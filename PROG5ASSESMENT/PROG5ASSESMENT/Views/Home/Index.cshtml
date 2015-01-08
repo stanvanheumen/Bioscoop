@@ -10,7 +10,7 @@
     <p>
         @using (Html.BeginForm("Create", "Reservering")) {
             <div class="input-group input-group-lg">
-                <input class="form-control" placeholder="Aantal personen . . ." type="text" id="ss" name="id" />
+                <input class="form-control" placeholder="Aantal personen . . ." type="text" id="ss" name="id" title="Reserveren voor een film : vul hier het aantal personen in waarvoor je wilt reserveren." />
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Reserveren</button>
                 </span>
@@ -18,3 +18,14 @@
         }
     </p>
 </div>
+
+@section Scripts {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $(document).tooltip();
+        });
+    </script>
+}
