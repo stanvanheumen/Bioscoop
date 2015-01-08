@@ -9,9 +9,11 @@
     </p>
     <p>
         @using (Html.BeginForm("Create", "Reservering")) {
-            <div class="btn-group btn-group-lg" role="group" aria-label="...">
-                <input class="btn btn-default" placeholder="Aantal personen . . ." type="text" id="ss" name="id" />
-                <input class="btn btn-default" type="submit" value="Reserveren" />
+            <div class="input-group input-group-lg">
+                <input class="form-control" placeholder="Aantal personen . . ." type="text" id="ss" name="id" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Reserveren</button>
+                </span>
             </div>
         }
     </p>

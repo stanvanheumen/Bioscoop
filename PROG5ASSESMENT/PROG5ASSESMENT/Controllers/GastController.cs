@@ -26,12 +26,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int id) {
             var model = _gastRepository.Get(id);
             return View(model);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(Gast gast) {
             gast.Reservering = _gastRepository.Get(gast.GastId).Reservering;
             if (CheckGast(gast)) {

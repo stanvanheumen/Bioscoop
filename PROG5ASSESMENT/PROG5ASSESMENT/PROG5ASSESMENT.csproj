@@ -120,6 +120,7 @@
     <Compile Include="Controllers\GastController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KortingController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReserveringController.cs" />
     <Compile Include="Controllers\ZaalController.cs" />
     <Compile Include="EntityContext.cs" />
@@ -214,6 +215,7 @@
     <Content Include="Views\Korting\Delete.cshtml" />
     <Content Include="Views\Korting\Edit.cshtml" />
     <Content Include="Views\Korting\Index.cshtml" />
+    <Content Include="Views\Login\LogIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

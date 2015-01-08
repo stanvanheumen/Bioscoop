@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "LogIn";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Gebruiker</h4>
+        <hr />
+
+        <table class="table">
+            <tr>
+                <td><label>Gebruikersnaam</label></td>
+                <td><input name="username" type="text" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td><label>Wachtwoord</label></td>
+                <td><input name="password" type="password" class="form-control" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Inloggen" class="btn btn-default" /></td>
+            </tr>
+        </table>
+
+    </div>
+}

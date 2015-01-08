@@ -20,12 +20,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create() {
             ViewBag.zalen = _filmRepository.GetAllZalen();
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Film film, int zaalId) {
             ViewBag.zalen   = _filmRepository.GetAllZalen();
             film.Zaal       = _filmRepository.GetZaal(zaalId);
@@ -38,6 +40,7 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int id) {
             ViewBag.zalen   = _filmRepository.GetAllZalen();
             var model       = _filmRepository.Get(id);
@@ -45,6 +48,7 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(Film film, int zaalId) {
             ViewBag.zalen = _filmRepository.GetAllZalen();
             film.Zaal = _filmRepository.GetZaal(zaalId);
@@ -57,12 +61,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Details(int id) {
             var model = _filmRepository.Get(id);
             return View(model);
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(int id) {
             var model = _filmRepository.Get(id);
             return View(model);
@@ -70,6 +76,7 @@ namespace PROG5ASSESMENT.Controllers {
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id) {
             var model = _filmRepository.Get(id);
             _filmRepository.Delete(model);

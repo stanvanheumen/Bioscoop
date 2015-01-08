@@ -26,11 +26,13 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create() {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Korting korting) {
             if (CheckKorting(korting)) {
                 _kortingRepository.Create(korting);
@@ -40,12 +42,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int id) {
             var model = _kortingRepository.Get(id);
             return View(model);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(Korting korting) {
             if (CheckKorting(korting)) {
                 _kortingRepository.Update(korting);
@@ -55,6 +59,7 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(int id) {
             var model = _kortingRepository.Get(id);
             return View(model);
@@ -62,6 +67,7 @@ namespace PROG5ASSESMENT.Controllers {
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id) {
             var model = _kortingRepository.Get(id);
             _kortingRepository.Delete(model);

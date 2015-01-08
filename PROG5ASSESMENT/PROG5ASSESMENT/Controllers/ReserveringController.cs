@@ -68,12 +68,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int id) {
             var model = _reserveringRepository.Get(id);
             return View(model);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(Reservering reservering) {
             if (CheckReservering(reservering)) {
                 _reserveringRepository.Update(reservering);
@@ -83,12 +85,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Details(int id) {
             var model = _reserveringRepository.Get(id);
             return View(model);
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(int id) {
             var model = _reserveringRepository.Get(id);
             return View(model);
@@ -96,6 +100,7 @@ namespace PROG5ASSESMENT.Controllers {
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id) {
             var model = _reserveringRepository.Get(id);
             _reserveringRepository.Delete(model);

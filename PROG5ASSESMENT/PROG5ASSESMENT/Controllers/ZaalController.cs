@@ -19,11 +19,13 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Create() {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Create(Zaal zaal) {
             if (CheckZaal(zaal)) {
                 _zaalRepository.Create(zaal);
@@ -33,12 +35,14 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int id) {
             var model = _zaalRepository.Get(id);
             return View(model);
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(Zaal zaal) {
             if (CheckZaal(zaal)) {
                 _zaalRepository.Update(zaal);
@@ -48,6 +52,7 @@ namespace PROG5ASSESMENT.Controllers {
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(int id) {
             var model = _zaalRepository.Get(id);
             return View(model);
@@ -55,6 +60,7 @@ namespace PROG5ASSESMENT.Controllers {
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id) {
             var model = _zaalRepository.Get(id);
             _zaalRepository.Delete(model);
