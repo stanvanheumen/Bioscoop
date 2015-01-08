@@ -6,26 +6,31 @@
 }
 
 <h2>Films</h2>
-@using ( Html.BeginForm( "Index", "Block", FormMethod.Get ) ) {
-    <p>
-        Zoeken in tabel: @Html.TextBox( "SearchString", ViewBag.CurrentFilter as string )
-        <input type="submit" value="Search" />
-    </p>
+@using (Html.BeginForm("Index", "Film", FormMethod.Get)) {
+    <div class="input-group input-group-lg">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, null, new { placeholder = "Zoeken in films", @class = "form-control" })
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+        </span>
+    </div>
 }
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink( Model.Naam, "Index", new { sortOrder = ViewBag.NameSortParm } )
+            @Html.ActionLink( "Naam", "Index", new { sortOrder = ViewBag.NameSortParm } )
             
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prijs)
+            Prijs
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDatumMetTijd)
+            Startdatum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EindDatumMetTijd)
+            Einddatum
         </th>
         <th></th>
     </tr>
@@ -52,6 +57,7 @@
     </tr>
 }
 </table>
+
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager( Model, page => Url.Action( "Index",

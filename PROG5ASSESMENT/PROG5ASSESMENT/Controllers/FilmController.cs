@@ -15,6 +15,7 @@ namespace PROG5ASSESMENT.Controllers {
 
         public FilmController() {
             _filmRepository = new EntityFilmRepository();
+            _search = new EntitySearchRepository();
         }
 
 		//[HttpGet]
