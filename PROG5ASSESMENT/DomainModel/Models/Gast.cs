@@ -4,8 +4,9 @@ namespace DomainModel.Models {
     
     public class Gast {
 
-        // Constructor
+        // Public constructor
         public Gast() { 
+            
         }
 
         // Primary
